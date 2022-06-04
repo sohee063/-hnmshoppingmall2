@@ -23,8 +23,6 @@ import PrivatePage from "./page/PrivatePage";
 
 function App() {
   const [auth, setAuth] = useState(false); // true면 로그인이 됨.
-  const [productItem, setProductItem] = useState(null);
-  console.log("결과값", productItem);
 
   useEffect(() => {
     console.log("aaa", auth);
@@ -33,15 +31,9 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={<ProductAll setProductItem={setProductItem} />}
-        />
+        <Route path="/" element={<ProductAll />} />
         <Route path="/login" element={<Login setAuth={setAuth} />} />
-        <Route
-          path="/product/:id"
-          element={<PrivatePage auth={auth} productItem={productItem} />}
-        />
+        <Route path="/product/:id" element={<PrivatePage auth={auth} />} />
       </Routes>
     </div>
   );

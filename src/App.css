@@ -61,12 +61,20 @@
   margin-top: 80px;
 }
 
-.detail-page {
+.product-img {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: flex-end;
 }
 
-.detail-page div {
-  margin: 10px;
+.dropdown {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.choice {
+  font-size: 6px;
+}
+
+.add-btn {
+  width: 500px;
 }

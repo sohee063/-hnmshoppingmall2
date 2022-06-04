@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const menuList = [
@@ -26,10 +27,12 @@ const Navbar = () => {
         <div>로그인</div>
       </div>
       <div className="nav-section">
-        <img
-          width={100}
-          src="https://blog.kakaocdn.net/dn/Yt80C/btqDeJAYUBo/JQbTuukRladq2AUOeqgiEK/img.jpg"
-        />
+        <Link to="/">
+          <img
+            width={100}
+            src="https://blog.kakaocdn.net/dn/Yt80C/btqDeJAYUBo/JQbTuukRladq2AUOeqgiEK/img.jpg"
+          />
+        </Link>
       </div>
       <div className="menu-area">
         <ul className="menu-list">

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProductCard from "../component/ProductCard";
 
-const ProductAll = ({ setProductItem }) => {
+const ProductAll = () => {
   const [productList, setProductList] = useState([]);
   const getProduct = async () => {
     let url = `http://localhost:3004/products`;
@@ -21,11 +21,7 @@ const ProductAll = ({ setProductItem }) => {
         <Row>
           {productList.map((menu) => (
             <Col lg={3}>
-              <ProductCard
-                item={menu}
-                setProductItem={setProductItem}
-                productList={productList}
-              />
+              <ProductCard item={menu} />
             </Col>
           ))}
         </Row>

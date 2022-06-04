@@ -1,11 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ item, setProductItem }) => {
+const ProductCard = ({ item }) => {
   const navigate = useNavigate();
   const showDetail = () => {
     navigate(`/product/${item.id}`);
-    setProductItem(item);
   };
   return (
     <div className="productcard-area" onClick={showDetail}>

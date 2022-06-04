@@ -1,20 +1,45 @@
-import React from "react";
-import { Container, Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Container, Row, Col, Button, Dropdown } from "react-bootstrap";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
-const ProductDetail = ({ productItem }) => {
-  console.log("나다 디테일", productItem);
+const ProductDetail = () => {
+  let { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const getPruductDetail = async () => {
+    let url = `http://localhost:3004/products/${id}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    setProduct(data);
+  };
+  useEffect(() => {
+    getPruductDetail();
+  }, []);
   return (
-    <Container className="detail-page">
-      <div>
-        <img src={productItem?.img} />
-      </div>
-      <div>
-        <div>{productItem?.title}</div>
-        <div>₩ {productItem?.price}</div>
-        <div>{productItem?.choice === true ? "Conscious choice" : ""}</div>
-        <div>사이즈선택</div>
-        <Button variant="dark">추가</Button>
-      </div>
+    <Container>
+      <Row>
+        <Col className="product-img">
+          <img src={product?.img} />
+        </Col>
+        <Col>
+          <div>{product?.title}</div>
+          <div> ₩ {product?.price}</div>
+
+          <div className="choice">
+            {product?.choice === true ? "Conscious choice" : ""}
+          </div>
+
+          <DropdownButton id="dropdown-basic-button" title="사이즈 선택 ">
+            {product?.size.map((el) => (
+              <Dropdown.Item className="dropdown">{el}</Dropdown.Item>
+            ))}
+          </DropdownButton>
+
+          <Button variant="dark" className="add-btn">
+            추가
+          </Button>
+        </Col>
+      </Row>
     </Container>
   );
 };
