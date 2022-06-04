@@ -20,6 +20,14 @@ const Navbar = () => {
   const goToLogin = () => {
     navigate("/login");
   };
+
+  const search = (event) => {
+    if (event.key === "Enter") {
+      // 입력한 검색어를 읽어와서 url을 바꿔 준다.
+      let keyword = event.target.value;
+      navigate(`/?q=${keyword}`);
+    }
+  };
   return (
     <div>
       <div className="login-area" onClick={goToLogin}>
@@ -43,7 +51,11 @@ const Navbar = () => {
 
         <div className="search-area">
           <FontAwesomeIcon icon={faSearch} />
-          <input type="input" placeholder="제품검색" />
+          <input
+            type="input"
+            placeholder="제품검색"
+            onKeyPress={(event) => search(event)}
+          />
         </div>
       </div>
     </div>
