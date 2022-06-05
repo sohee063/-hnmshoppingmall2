@@ -8,8 +8,7 @@ const ProductAll = () => {
   const [query, setQuery] = useSearchParams();
   const getProduct = async () => {
     let searchQuery = query.get("q") || "";
-    console.log("응", searchQuery);
-    let url = `https://my-json-server.typicode.com/sohee063/hnmshoppingmall2/products?q=${searchQuery}`;
+    let url = `https://my-json-server.typicode.com/sohee063/-hnmshoppingmall2/products?q=${searchQuery}`;
     let reponse = await fetch(url);
     let data = await reponse.json();
     setProductList(data);
