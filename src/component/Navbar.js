@@ -5,7 +5,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ setAuth, auth }) => {
   const menuList = [
     "여성",
     "Divided",
@@ -28,11 +28,17 @@ const Navbar = () => {
       navigate(`/?q=${keyword}`);
     }
   };
+
+  const logOut = () => {
+    setAuth(false);
+    navigate("/");
+  };
+
   return (
     <div>
       <div className="login-area" onClick={goToLogin}>
         <FontAwesomeIcon icon={faUser} />
-        <div>로그인</div>
+        <div onClick={logOut}>{auth === true ? "로그아웃" : "로그인"}</div>
       </div>
       <div className="nav-section">
         <Link to="/">

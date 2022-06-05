@@ -16,10 +16,11 @@ import PrivatePage from "./page/PrivatePage";
 
 // 3. 상품상세를 눌렀으나, 로그인이 안되있을 경우 로그인 페이지가 먼저 나온다.
 // 4. 로그인이 되어 있을 경우에는 상품상세페이지를 볼 수 있다.
+// 7. 상품을 검색할 수 있다.
+
 // 5. 상품상세페이지에서 로그아웃버튼을 누를 경우 로그아웃이 된다.
 // 5. 로그아웃이 되면 상품상세페이지를 볼 수 없다. 다시 로그인페이지가 보인다.
 // 6. 로그인을 하면 로그아웃이 보이고 로그아웃을 하면 로그인이 보인다.
-// 7. 상품을 검색할 수 있다.
 
 function App() {
   const [auth, setAuth] = useState(false); // true면 로그인이 됨.
@@ -29,7 +30,7 @@ function App() {
   }, [auth]);
   return (
     <div>
-      <Navbar />
+      <Navbar setAuth={setAuth} auth={auth} />
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route path="/login" element={<Login setAuth={setAuth} />} />
