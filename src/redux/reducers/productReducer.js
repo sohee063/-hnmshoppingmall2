@@ -1,5 +1,6 @@
 let initialState = {
   productList: [],
+  productDetail: null, // 왜 null 일까???
 };
 
 function productReducer(state = initialState, action) {
@@ -7,6 +8,8 @@ function productReducer(state = initialState, action) {
   switch (type) {
     case "GET_PRODUCT_SUCCESS":
       return { ...state, productList: payload.data };
+    case "GET_PRODUCT_DETAIL_SUCCESS":
+      return { ...state, productDetail: payload.data };
     default:
       return { ...state };
   }

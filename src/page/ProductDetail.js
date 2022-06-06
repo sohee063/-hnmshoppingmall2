@@ -2,19 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button, Dropdown } from "react-bootstrap";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import { useDispatch, useSelector } from "react-redux";
+import { productAction } from "../redux/actions/productAction";
 
 const ProductDetail = () => {
   let { id } = useParams();
-  const [product, setProduct] = useState(null);
-  const getPruductDetail = async () => {
-    let url = `https://my-json-server.typicode.com/sohee063/-hnmshoppingmall2/products/${id}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    setProduct(data);
+  console.log("아이디", id);
+  // const [product, setProduct] = useState(null);
+  const product = useSelector((state) => state.product.productDetail);
+  console.log("디테일", product);
+  const dispatch = useDispatch();
+  const getProductDetail = async () => {
+    dispatch(productAction.getProductDetail(id));
   };
   useEffect(() => {
-    getPruductDetail();
+    getProductDetail();
   }, []);
+
   return (
     <Container>
       <Row>
