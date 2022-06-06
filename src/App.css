@@ -78,3 +78,15 @@
 .add-btn {
   width: 500px;
 }
+
+@media screen and (max-width: 63rem) {
+  .hide {
+    visibility: visible;
+  }
+  .menu-area {
+    display: none;
+  }
+  .search-box {
+    display: none;
+  }
+}
